@@ -1,0 +1,5 @@
+if(EXISTS "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build/assignment-09-mandatory_test[1]_tests.cmake")
+  include("/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build/assignment-09-mandatory_test[1]_tests.cmake")
+else()
+  add_test(assignment-09-mandatory_test_NOT_BUILT assignment-09-mandatory_test_NOT_BUILT)
+endif()
