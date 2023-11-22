@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(assignment-09-mandatory)
+project(SortingAlgorithms)
 
 set(CMAKE_CXX_STANDARD 20)
 

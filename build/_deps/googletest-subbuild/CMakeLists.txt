@@ -28,8 +28,8 @@ set_property(GLOBAL PROPERTY _CMAKE_FindGit_GIT_EXECUTABLE_VERSION
 include(ExternalProject)
 ExternalProject_Add(googletest-populate
                      "UPDATE_DISCONNECTED" "False" "GIT_REPOSITORY" "https://github.com/google/googletest.git" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "GIT_TAG" "f8d7d77c06936315286eb55f8de22cd23c188571"
-                    SOURCE_DIR          "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build/_deps/googletest-src"
-                    BINARY_DIR          "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build/_deps/googletest-build"
+                    SOURCE_DIR          "/Users/andrebrahin/Computing_Science/SortingAlgorithms/build/_deps/googletest-src"
+                    BINARY_DIR          "/Users/andrebrahin/Computing_Science/SortingAlgorithms/build/_deps/googletest-build"
                     CONFIGURE_COMMAND   ""
                     BUILD_COMMAND       ""
                     INSTALL_COMMAND     ""

@@ -57,10 +57,10 @@ RM = /opt/homebrew/Cellar/cmake/3.27.4/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2"
+CMAKE_SOURCE_DIR = /Users/andrebrahin/Computing_Science/SortingAlgorithms
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build"
+CMAKE_BINARY_DIR = /Users/andrebrahin/Computing_Science/SortingAlgorithms/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,9 +142,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build/CMakeFiles" "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build//CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/andrebrahin/Computing_Science/SortingAlgorithms/build/CMakeFiles /Users/andrebrahin/Computing_Science/SortingAlgorithms/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/andrebrahin/Computing_Science/SortingAlgorithms/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -172,30 +172,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named assignment-09-mandatory
+# Target rules for targets named SortingAlgorithms
 
 # Build rule for target.
-assignment-09-mandatory: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignment-09-mandatory
-.PHONY : assignment-09-mandatory
+SortingAlgorithms: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SortingAlgorithms
+.PHONY : SortingAlgorithms
 
 # fast build rule for target.
-assignment-09-mandatory/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/assignment-09-mandatory.dir/build.make CMakeFiles/assignment-09-mandatory.dir/build
-.PHONY : assignment-09-mandatory/fast
+SortingAlgorithms/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SortingAlgorithms.dir/build.make CMakeFiles/SortingAlgorithms.dir/build
+.PHONY : SortingAlgorithms/fast
 
 #=============================================================================
-# Target rules for targets named assignment-09-mandatory_test
+# Target rules for targets named SortingAlgorithms_test
 
 # Build rule for target.
-assignment-09-mandatory_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignment-09-mandatory_test
-.PHONY : assignment-09-mandatory_test
+SortingAlgorithms_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SortingAlgorithms_test
+.PHONY : SortingAlgorithms_test
 
 # fast build rule for target.
-assignment-09-mandatory_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/assignment-09-mandatory_test.dir/build.make CMakeFiles/assignment-09-mandatory_test.dir/build
-.PHONY : assignment-09-mandatory_test/fast
+SortingAlgorithms_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SortingAlgorithms_test.dir/build.make CMakeFiles/SortingAlgorithms_test.dir/build
+.PHONY : SortingAlgorithms_test/fast
 
 #=============================================================================
 # Target rules for targets named Experimental
@@ -618,7 +618,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/assignment-09-mandatory.dir/build.make CMakeFiles/assignment-09-mandatory.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SortingAlgorithms.dir/build.make CMakeFiles/SortingAlgorithms.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -626,7 +626,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/assignment-09-mandatory.dir/build.make CMakeFiles/assignment-09-mandatory.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SortingAlgorithms.dir/build.make CMakeFiles/SortingAlgorithms.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -634,7 +634,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/assignment-09-mandatory.dir/build.make CMakeFiles/assignment-09-mandatory.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SortingAlgorithms.dir/build.make CMakeFiles/SortingAlgorithms.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 main_test.o: main_test.cpp.o
@@ -642,7 +642,7 @@ main_test.o: main_test.cpp.o
 
 # target to build an object file
 main_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/assignment-09-mandatory_test.dir/build.make CMakeFiles/assignment-09-mandatory_test.dir/main_test.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SortingAlgorithms_test.dir/build.make CMakeFiles/SortingAlgorithms_test.dir/main_test.cpp.o
 .PHONY : main_test.cpp.o
 
 main_test.i: main_test.cpp.i
@@ -650,7 +650,7 @@ main_test.i: main_test.cpp.i
 
 # target to preprocess a source file
 main_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/assignment-09-mandatory_test.dir/build.make CMakeFiles/assignment-09-mandatory_test.dir/main_test.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SortingAlgorithms_test.dir/build.make CMakeFiles/SortingAlgorithms_test.dir/main_test.cpp.i
 .PHONY : main_test.cpp.i
 
 main_test.s: main_test.cpp.s
@@ -658,7 +658,7 @@ main_test.s: main_test.cpp.s
 
 # target to generate assembly for a file
 main_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/assignment-09-mandatory_test.dir/build.make CMakeFiles/assignment-09-mandatory_test.dir/main_test.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SortingAlgorithms_test.dir/build.make CMakeFiles/SortingAlgorithms_test.dir/main_test.cpp.s
 .PHONY : main_test.cpp.s
 
 # Help Target
@@ -702,8 +702,8 @@ help:
 	@echo "... NightlySubmit"
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
-	@echo "... assignment-09-mandatory"
-	@echo "... assignment-09-mandatory_test"
+	@echo "... SortingAlgorithms"
+	@echo "... SortingAlgorithms_test"
 	@echo "... gmock"
 	@echo "... gmock_main"
 	@echo "... gtest"

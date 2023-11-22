@@ -1,4 +1,4 @@
-# Install script for directory: /Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build/_deps/googletest-src
+# Install script for directory: /Users/andrebrahin/Computing_Science/SortingAlgorithms/build/_deps/googletest-src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build/_deps/googletest-build/googlemock/cmake_install.cmake")
+  include("/Users/andrebrahin/Computing_Science/SortingAlgorithms/build/_deps/googletest-build/googlemock/cmake_install.cmake")
 
 endif()
 

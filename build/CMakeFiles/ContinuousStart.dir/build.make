@@ -53,10 +53,10 @@ RM = /opt/homebrew/Cellar/cmake/3.27.4/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2"
+CMAKE_SOURCE_DIR = /Users/andrebrahin/Computing_Science/SortingAlgorithms
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build"
+CMAKE_BINARY_DIR = /Users/andrebrahin/Computing_Science/SortingAlgorithms/build
 
 # Utility rule file for ContinuousStart.
 
@@ -82,6 +82,6 @@ CMakeFiles/ContinuousStart.dir/clean:
 .PHONY : CMakeFiles/ContinuousStart.dir/clean
 
 CMakeFiles/ContinuousStart.dir/depend:
-	cd "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2" "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2" "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build" "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build" "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build/CMakeFiles/ContinuousStart.dir/DependInfo.cmake" "--color=$(COLOR)"
+	cd /Users/andrebrahin/Computing_Science/SortingAlgorithms/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/andrebrahin/Computing_Science/SortingAlgorithms /Users/andrebrahin/Computing_Science/SortingAlgorithms /Users/andrebrahin/Computing_Science/SortingAlgorithms/build /Users/andrebrahin/Computing_Science/SortingAlgorithms/build /Users/andrebrahin/Computing_Science/SortingAlgorithms/build/CMakeFiles/ContinuousStart.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/ContinuousStart.dir/depend
 

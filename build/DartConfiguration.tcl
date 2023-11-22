@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: /Users/andrebrahin/Downloads/assignment-09-mandatory-files 2
-BuildDirectory: /Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build
+SourceDirectory: /Users/andrebrahin/Computing_Science/SortingAlgorithms
+BuildDirectory: /Users/andrebrahin/Computing_Science/SortingAlgorithms/build
 
 # Where to place the cost data store
 CostDataFile: 
@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/opt/homebrew/Cellar/cmake/3.27.4/bin/cmake" "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2"
+ConfigureCommand: "/opt/homebrew/Cellar/cmake/3.27.4/bin/cmake" "/Users/andrebrahin/Computing_Science/SortingAlgorithms"
 MakeCommand: /opt/homebrew/Cellar/cmake/3.27.4/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 
@@ -45,7 +45,7 @@ SVNOptions:
 SVNUpdateOptions: 
 
 # Git options
-GITCommand: 
+GITCommand: /usr/bin/git
 GITInitSubmodules: 
 GITUpdateOptions: 
 GITUpdateCustom: 
@@ -58,9 +58,9 @@ P4UpdateOptions:
 P4UpdateCustom: 
 
 # Generic update command
-UpdateCommand: 
+UpdateCommand: /usr/bin/git
 UpdateOptions: 
-UpdateType: 
+UpdateType: git
 
 # Compiler info
 Compiler: /usr/bin/clang++

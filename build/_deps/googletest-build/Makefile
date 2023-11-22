@@ -57,10 +57,10 @@ RM = /opt/homebrew/Cellar/cmake/3.27.4/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2"
+CMAKE_SOURCE_DIR = /Users/andrebrahin/Computing_Science/SortingAlgorithms
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build"
+CMAKE_BINARY_DIR = /Users/andrebrahin/Computing_Science/SortingAlgorithms/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,14 +142,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build" && $(CMAKE_COMMAND) -E cmake_progress_start "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build/CMakeFiles" "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build/_deps/googletest-build//CMakeFiles/progress.marks"
-	cd "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/googletest-build/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build/CMakeFiles" 0
+	cd /Users/andrebrahin/Computing_Science/SortingAlgorithms/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/andrebrahin/Computing_Science/SortingAlgorithms/build/CMakeFiles /Users/andrebrahin/Computing_Science/SortingAlgorithms/build/_deps/googletest-build//CMakeFiles/progress.marks
+	cd /Users/andrebrahin/Computing_Science/SortingAlgorithms/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/googletest-build/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/andrebrahin/Computing_Science/SortingAlgorithms/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/googletest-build/clean
+	cd /Users/andrebrahin/Computing_Science/SortingAlgorithms/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/googletest-build/clean
 .PHONY : clean
 
 # The main clean target
@@ -158,17 +158,17 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/googletest-build/preinstall
+	cd /Users/andrebrahin/Computing_Science/SortingAlgorithms/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/googletest-build/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/googletest-build/preinstall
+	cd /Users/andrebrahin/Computing_Science/SortingAlgorithms/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/googletest-build/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/andrebrahin/Computing_Science/SortingAlgorithms/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Help Target
@@ -195,6 +195,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd "/Users/andrebrahin/Downloads/assignment-09-mandatory-files 2/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/andrebrahin/Computing_Science/SortingAlgorithms/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
