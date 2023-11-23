@@ -1,3 +1,0 @@
-/Users/andrebrahin/Computing_Science/SortingAlgorithms/build/CMakeFiles/SortingAlgorithms.dir
-/Users/andrebrahin/Computing_Science/SortingAlgorithms/build/CMakeFiles/edit_cache.dir
-/Users/andrebrahin/Computing_Science/SortingAlgorithms/build/CMakeFiles/rebuild_cache.dir

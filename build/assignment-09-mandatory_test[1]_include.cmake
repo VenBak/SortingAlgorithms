@@ -1,5 +1,0 @@
-if(EXISTS "/Users/andrebrahin/Computing_Science/SortingAlgorithms/build/assignment-09-mandatory_test[1]_tests.cmake")
-  include("/Users/andrebrahin/Computing_Science/SortingAlgorithms/build/assignment-09-mandatory_test[1]_tests.cmake")
-else()
-  add_test(assignment-09-mandatory_test_NOT_BUILT assignment-09-mandatory_test_NOT_BUILT)
-endif()

@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/Users/andrebrahin/Computing_Science/SortingAlgorithms/build",
-  "command": "/usr/bin/clang++   -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -Wall -Wextra -pedantic-errors -o CMakeFiles/SortingAlgorithms.dir/main.cpp.o -c /Users/andrebrahin/Computing_Science/SortingAlgorithms/main.cpp",
-  "file": "/Users/andrebrahin/Computing_Science/SortingAlgorithms/main.cpp",
-  "output": "CMakeFiles/SortingAlgorithms.dir/main.cpp.o"
-}
-]
