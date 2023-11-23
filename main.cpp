@@ -535,6 +535,21 @@ void heap_sort(vector<El>& data)
  * main function:
  *
  *********************************************************************************************************/
+vector <Track> get_slice(const vector<Track>& t, Slice s)
+{
+    // Precondition:
+    assert(t.length() == SLICE_STEP);
+
+    // Postcondition:
+
+    vector<Track> sliced; 
+    for( int i=first(s); i<last(s); i++)
+    {
+        sliced.push_back(t.at(i));
+    }
+    return sliced;
+}
+
 void generate_csv (const vector<Track>& tracks, ofstream& os)
 {// Precondition:
     assert (os.is_open());
@@ -543,10 +558,55 @@ void generate_csv (const vector<Track>& tracks, ofstream& os)
     A CSV file has been written to `os` based on measuring the amount of operations needed to sort growing slices of `tracks`
 */
     // implement this function
-    cout << "Sorting Algorithm" << endl;
-    cout << "Insertion Sort" << endl;
-    cout << "Selection Sort" << endl;
-    cout << "Heap Sort" << endl;
+    vector<Track> slice;
+
+    os << "Sorting Algorithm" ;
+    for (int i = 500; i <= MAX_SLICE; i += SLICE_STEP)
+    {
+        os << ","<< i ;
+    }
+    os << endl;
+
+    os << "Insertion Sort" ;
+
+    for (int i = 0; i < MAX_SLICE; i += SLICE_STEP)
+    {
+        slice = get_slice(tracks, make_slice(i, SLICE_STEP));
+        insertion_sort(slice);
+        os << ","<< g_count ;
+    }
+    os << endl;
+    g_count = 0;
+
+    os << "Selection Sort" ;
+    for (int i = 0; i < MAX_SLICE; i += SLICE_STEP)
+    {
+        slice = get_slice(tracks, make_slice(i, SLICE_STEP));
+        selection_sort(slice);
+        os << ","<< g_count ;
+    }
+    os << endl;
+    g_count = 0;
+
+    os << "Bubble Sort";
+    for (int i = 0; i < MAX_SLICE; i += SLICE_STEP)
+    {
+        slice = get_slice(tracks, make_slice(i, SLICE_STEP));
+        bubble_sort(slice);
+        os <<"," << g_count ;
+    }
+    os << endl;
+    g_count = 0;
+
+    os << "Heap Sort";
+    for (int i = 0; i < MAX_SLICE; i += SLICE_STEP)
+    {
+        slice = get_slice(tracks, make_slice(i, SLICE_STEP));
+        heap_sort(slice);
+        os<< "," << g_count ;
+    }
+    os << endl;
+    g_count = 0;
 }
 
 #ifndef TESTING
