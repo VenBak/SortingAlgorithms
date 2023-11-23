@@ -1,0 +1,39 @@
+Part 1 
+a. O(N^3) or O(N*N*N) because there are 3 for repetitive structures nested in eachother.
+b. O(L*M*N) because there are 3 repetitive structures with 3 diffenrent variables nested in eachother.
+c. O(text.length()), in the worst case the while loop iterates for text.lenght() times.
+d. O(strlen(text)), in the wost case the while loop iterates over the whole string.
+e. O(sqrt(x)), runtime complexity depends on the square root of x.
+f. O(length), runtime complexity depends on the length of the array, which is the formal parameter length.
+g. O(length),  runtime complexity depends on the length of the vector.
+h. O(n*size(source)),  runtime complexity depends on the length of the vector and n, as the for is nested in the while loop.
+i. O(1), the complexity is 1 as the code performs a single comparisons.
+
+
+
+Part 4
+    Insertion sort:
+    The worst case of the algorithm happens when processing the measurments_reverse file, when the data is purposefuly sorted in a declining order. 
+    The best case of the algorithm happens when processing measurments_tracks and measurments_sorted, which is when the data is somewhat sorted.
+    The average case happens when processing randomly distributed data.
+    The order of the database significantly impacts the measured number of operations, as we can see, the algorithm performing significantly worse we the tracks are reversed or random.
+    The reason why is beacause the algorithm goes over the dataset from left to right, which is very convenient when the data is sorted.
+
+    Selection sort:
+    This algorithm performs the same no matter the arrangement of the data, as it has O(n*n) complexity all the time, which we can see in the graphs. 
+    The order of the database is not important as the runtime complexity is the same for each case.
+
+    Bubble sort:
+    The worst case of the algorithm happens when processing the measurments_reverse and measurments_random files.
+    The best case of the algorithm happens when processing measurments_sorted, mostly because of its ability to stop when the items are already sorted.
+    On average the runtime complexity is the same as the worst case.
+    The order odes matter, as the algorithm performs better when the data is slighty sorted.
+    The algorithm performs better because it can skip sequences where elements are already sorted.
+
+    Heap sort:
+
+    The worst case of the algorithm is when the elements are already sorted as it has to create a heap and then reorder all elements again.
+    The best case is when the data is reversed as it is easier to create a heap, because each element is smaller than its parent.
+    The average case is when the data is shufled randomly.
+    The order of the elements is important, and affects the runtime complexity.
+    As the list from which the heap is made can be already in a helpful order.
