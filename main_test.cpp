@@ -483,7 +483,7 @@ TEST(sorting_extra, pick_heap)
         make_track(1), make_track(2), make_track(3), make_track(4), make_track(5), make_track(6), make_track(7)
     };
 
-    pick_heap(actual, 6);
+    pick_heap(actual);
     EXPECT_EQ(actual, EXPECTED);
 }
 
