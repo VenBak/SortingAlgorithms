@@ -1,4 +1,3 @@
-#define NDEBUG // we must define this _before_ we include cassert
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -6,11 +5,6 @@
 #include <cassert>
 
 using namespace std;
-
-const int SLICE_STEP = 500; // The amount used when incrementing track sorting slices in each step
-const int MAX_SLICE = 6500; // The maximum size of the tracks sorting slice (inclusive)
-
-// Reuse your implementation from last week as a starting point.
 
 struct Length
 {
@@ -43,6 +37,12 @@ ostream& operator<< (ostream& out, const Length length)
 */
 
     // use your implementation of last week
+    if(length.seconds < 10){
+        out << length.minutes << ":0" << length.seconds;
+    }
+    else{
+        out << length.minutes << ":" << length.seconds;
+    }
     return out;
 }
 
@@ -53,6 +53,8 @@ istream& operator>> (istream& in, Length& length)
     the value of length has been read from in: first minutes, then ':', then seconds
 */
     // use your implementation of last week
+    char bin;
+    in >> length.minutes >> bin >> length.seconds;
     return in;
 }
 
@@ -74,6 +76,18 @@ istream& operator>> (istream& in, Track& track)
     The following (empty) line from in has also been read.
 */
     // use your implementation of last week
+    getline(in, track.artist);
+    getline(in, track.cd);
+    in >> track.year;
+    in >> track.track;
+    in.ignore();
+    getline(in, track.title);
+    getline(in, track.tags);
+    in >> track.time;
+    in.ignore();
+    getline(in, track.country);
+    string emptyLine;
+    getline(in, emptyLine);
     return in;
 }
 
@@ -155,8 +169,15 @@ bool operator== (const Track& a, const Track& b)
 /*  Postcondition:
     returns true only if all selector values of a are equal to their counterparts of b
 */
-    // use your implementation of last week
-    return false;
+    // implement this function
+    return a.artist == b.artist &&
+           a.cd == b.cd &&
+           a.year == b.year &&
+           a.track == b.track &&
+           a.title == b.title &&
+           a.tags == b.tags &&
+           a.time.minutes == b.time.minutes &&
+           a.country == b.country;
 }
 
 bool operator!= (const Track& a, const Track& b)
@@ -174,8 +195,16 @@ bool operator< (const Track& a, const Track& b)
 /*  Postcondition:
     check the assignment for the proper definition of < on Tracks
 */
-    // use your implementation of last week
-    return false;
+    // implement this function
+    if (a.artist != b.artist) {
+        return a.artist < b.artist;
+    } else if (a.cd != b.cd) {
+        return a.cd < b.cd;
+    } else if (a.year != b.year) {
+        return a.year < b.year;
+    } else {
+        return a.track < b.track;
+    }
 }
 
 bool operator>(const Track& a, const Track& b)
@@ -211,8 +240,13 @@ bool is_sorted (const vector<El>& data, Slice s)
 /*  post-condition:
     result is true if data.at(first (s)) <= data.at(first (s) + 1) ... data.at(last(s)-1) <= data.at(last(s))
 */
-    // use your implementation of last week
-    return false;
+    // implement this function
+    for (int i = s.from; i < last(s); ++i) {
+        if (data.at(i) > data.at(i + 1)) {
+            return false;
+        }
+    }
+    return true;
 }
 
 /**********************************************************************************************************
@@ -228,7 +262,12 @@ void insert (vector<El>& data, Slice s)
 /*  Postcondition:
     data.at (last (s)+1) is moved in data.at (first (s))...data.at (last (s)+1) and is_sorted (data, make_slice (s.from s.length+1))
 */
-    // use your implementation of last week
+    // implement this function
+    int i = last(s);
+    while (i >= s.from && data[i] > data[i + 1]) {
+        swap(data[i], data[i + 1]);
+        --i;
+    }
 }
 
 void insertion_sort(vector<El>& data)
@@ -237,7 +276,10 @@ void insertion_sort(vector<El>& data)
 /*  Postcondition:
     data is sorted in increasing order, according to < and == on El (don't forget to implement operator< and operator==)
 */
-    // use your implementation of last week
+    // implement this function
+    for (int i = 1; i < ssize(data); ++i) {
+        insert(data, make_slice(0, i));
+    }
 }
 
 /**********************************************************************************************************
@@ -252,8 +294,14 @@ int max_value_at (const vector<El>& data, Slice s)
 /*  Postcondition:
     data.at (result) is the maximum of every element in data.at (first (s)) ... data.at (last (s))
 */
-    // use your implementation of last week
-    return 0;
+    // implement this function
+    int maxIndex = s.from;
+    for (int i = s.from + 1; i <= last(s); ++i) {
+        if (data[i] > data[maxIndex]) {
+            maxIndex = i;
+        }
+    }
+    return maxIndex;
 }
 
 void selection_sort(vector<El>& data)
@@ -262,7 +310,16 @@ void selection_sort(vector<El>& data)
 /*  Postcondition:
     data is sorted in increasing order, according to < and == on El (don't forget to implement operator< and operator==)
 */
-    // use your implementation of last week
+    // implement this function
+    for (int i = 0; i < ssize(data) - 1; ++i) {
+        int minIndex = i;
+        for (int j = i + 1; j < ssize(data); ++j) {
+            if (data[j] < data[minIndex]) {
+                minIndex = j;
+            }
+        }
+        swap(data[i], data[minIndex]);
+    }
 }
 
 /**********************************************************************************************************
@@ -277,8 +334,16 @@ bool bubble (vector<El>& data, Slice unsorted)
     immediate pairs in data with slice unsorted are swapped if left element is larger than right element, and result is
     true only if this is done at least once (don't forget to implement operator< and operator==)
 */
-    // use your implementation of last week
-    return false;
+    // implement this function
+    bool swapped = false;
+    for (int i = first(unsorted); i < last(unsorted); ++i) {
+        if (data[i] > data[i + 1]) {
+            swap(data[i], data[i + 1]);
+            swapped = true;
+        }
+    }
+    return swapped;
+
 }
 
 void bubble_sort(vector<El>& data)
@@ -287,7 +352,11 @@ void bubble_sort(vector<El>& data)
 /*  Postcondition:
     data is sorted in increasing order, according to < and == on El (don't forget to implement operator< and operator==)
 */
-    // use your implementation of last week
+    // implement this function
+    Slice unsorted = make_slice(0, ssize(data) - 1);
+    while (bubble(data, unsorted)) {
+        unsorted.length--;
+    }
 }
 
 /**********************************************************************************************************
@@ -346,8 +415,20 @@ bool is_a_heap (const vector<El>& data, Slice s)
 /*  Postcondition:
     result is true only if all existing children in slice s of data have a value that is not greater than their parent
 */
-    // use your implementation of last week
-    return false;
+    // implement this function
+    for (int i = first(s); i <= last(s); ++i) {
+        int leftChildIdx = left_child(i);
+        int rightChildIdx = right_child(i);
+
+        if (leftChildIdx <= last(s) && data.at(leftChildIdx) > data.at(i)) {
+            return false;
+        }
+
+        if (rightChildIdx <= last(s) && data.at(rightChildIdx) > data.at(i)) {
+            return false;
+        }
+    }
+    return true;
 }
 
 void push_up ( vector<El>& data, int elem )
@@ -356,16 +437,12 @@ void push_up ( vector<El>& data, int elem )
 /*  Postcondition:
     is_a_heap (data, make_slice (0, elem+1))
 */
-    // use your implementation of last week
-}
-
-void build_heap ( vector<El>& data )
-{// Precondition:
-    assert (true );
-/*  Postcondition:
-    is_a_heap (data, make_slice (0, ssize (data)))
-*/
-    // use your implementation of last week
+    // implement this function
+    int current = elem;
+    while (current > 0 && data.at(current) > data.at(parent(current))) {
+        swap(data.at(current), data.at(parent(current)));
+        current = parent(current);
+    }
 }
 
 bool largest_child (const vector<El>& data, int parent, int unsorted, El& child, int& which)
@@ -376,7 +453,28 @@ bool largest_child (const vector<El>& data, int parent, int unsorted, El& child,
     result is true only if the element at parent in data has one or two unsorted child elements;
     only in that case the value of the largest child is child and its index position is which
 */
-    // use your implementation of last week
+    // implement this function
+    int leftChildIdx = left_child(parent);
+    int rightChildIdx = right_child(parent);
+
+    if (leftChildIdx <= unsorted && rightChildIdx <= unsorted) {
+        if (data.at(leftChildIdx) > data.at(rightChildIdx)) {
+            child = data.at(leftChildIdx);
+            which = leftChildIdx;
+        } else {
+            child = data.at(rightChildIdx);
+            which = rightChildIdx;
+        }
+        return true;
+    } else if (leftChildIdx <= unsorted) {
+        child = data.at(leftChildIdx);
+        which = leftChildIdx;
+        return true;
+    } else if (rightChildIdx <= unsorted) {
+        child = data.at(rightChildIdx);
+        which = rightChildIdx;
+        return true;
+    }
     return false;
 }
 
@@ -386,7 +484,41 @@ void push_down (vector<El>& data, int unsorted)
 /*  Postcondition:
     is_a_heap (data, make_slice (0,unsorted+1))
 */
-    // use your implementation of last week
+    // implement this function
+//    int largestChildIdx;
+//    El largestChild;
+//
+//    while (largest_child(data, parent, unsorted, largestChild, largestChildIdx)) {
+//        if (data[parent] < largestChild) {
+//            swap(data[parent], data[largestChildIdx]);
+//            parent = largestChildIdx;
+//        } else {
+//            break;
+//        }
+//    }
+    int i = 0;
+
+    int j = 0;
+
+    El child;
+    while(largest_child(data, i, unsorted, child, j) && data.at(i) < child) {
+        
+        swap(data.at(i), data.at(j));
+        
+        i = j;
+    }
+}
+
+void build_heap ( vector<El>& data )
+{// Precondition:
+    assert (true );
+/*  Postcondition:
+    is_a_heap (data, make_slice (0, ssize (data)))
+*/
+    // implement this function
+    for (int i = 1; i < ssize(data); i++) {
+        push_up(data, i);
+    }
 }
 
 void pick_heap (vector<El>& data)
@@ -395,7 +527,14 @@ void pick_heap (vector<El>& data)
 /*  Postcondition:
     data is sorted in increasing order, according to < and == on El (don't forget to implement < and ==)
 */
-    // use your implementation of last week
+    // implement this function
+    for(int unsorted = size(data) - 1; unsorted > 0; unsorted--) {
+
+    swap(data.at(0), data.at(unsorted));
+
+    push_down(data, unsorted - 1);
+
+    }
 }
 
 void heap_sort(vector<El>& data)
@@ -404,7 +543,9 @@ void heap_sort(vector<El>& data)
 /*  Postcondition:
     data is sorted in increasing order, according to < and == on El (don't forget to implement < and ==)
 */
-    // use your implementation of last week
+    // implement this function
+    build_heap(data);
+    pick_heap(data, ssize(data) - 1);
 }
 
 /**********************************************************************************************************
@@ -412,78 +553,110 @@ void heap_sort(vector<El>& data)
  * main function:
  *
  *********************************************************************************************************/
-void generate_csv (const vector<Track>& tracks, ofstream& os)
+enum SortAlgorithm
+{
+    InsertionSort,
+    SelectionSort,
+    BubbleSort,
+    HeapSort
+};
+
+const int SORT_ALGORITHMS = HeapSort + 1;
+const string SORT_ALGORITHM_NAMES[SORT_ALGORITHMS] = {
+    "Insertion sort",
+    "Selection sort",
+    "Bubble sort",
+    "Heap sort"
+};
+
+bool load_database (string filename, vector<El>& database)
 {// Precondition:
-    assert (os.is_open());
-    assert (ssize(tracks) >= MAX_SLICE);
+    assert (true);
 /*  Postcondition:
-    A CSV file has been written to `os` based on measuring the amount of operations needed to sort growing slices of `tracks`
+    `database` contains database loaded from file `filename` and return value is true if no errors occurred.
+    return value is false otherwise.
 */
-    // implement this function
+    ifstream database_file(filename);
+    El element;
+
+    if(!database_file.is_open()) {
+        return false;
+    }
+
+    while(database_file >> element) {
+        database.push_back(element);
+    }
+
+    return true;
+}
+
+SortAlgorithm get_sort_algorithm()
+{// Precondition:
+    assert (true);
+/*  Postcondition:
+    return value is the user chosen sorting algorithm.
+*/
+    int choice;
+
+    do {
+        cout << "\nSelect a sorting algorithm" << endl;
+        for(int i = 1; i <= SORT_ALGORITHMS; i++) {
+            cout << i << ". " << SORT_ALGORITHM_NAMES[i - 1] << endl;
+        }
+
+        cout << "> ";
+        cin >> choice;
+
+        if(choice < 1 || choice > SORT_ALGORITHMS) {
+            cout << "Invalid sorting algorithm" << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
+        }
+    } while(choice < 1 || choice > SORT_ALGORITHMS);
+
+    return static_cast<SortAlgorithm>(choice - 1);
 }
 
 #ifndef TESTING
-int main ()
+int main()
 {// Precondition:
     assert (true) ;
 /*  Postcondition:
-    the program has generated the csvs of measurements obtained by sorting growing slices of the music databases
+    The music database "Tracks.txt" has been read (if present and correctly formatted).
+    The sorted database has been printed according to the user selected sorting algorithm.
 */
-    ifstream tracks_file("Tracks.txt");
-    ifstream sorted_file("Tracks_sorted.txt");
-    ifstream random_file("Tracks_random.txt");
-    ifstream reverse_file("Tracks_reverse.txt");
-    ofstream tracks_csv("measurements_tracks.csv");
-    ofstream sorted_csv("measurements_sorted.csv");
-    ofstream random_csv("measurements_random.csv");
-    ofstream reverse_csv("measurements_reverse.csv");
+    vector<El> database;
 
-    if(!tracks_file.is_open()) {
-        cout << "Failed to open Tracks.txt" << endl;
-        return 1;
-    } else if(!sorted_file.is_open()) {
-        cout << "Failed to open Tracks_sorted.txt" << endl;
-        return 1;
-    } else if(!random_file.is_open()) {
-        cout << "Failed to open Tracks_random.txt" << endl;
-        return 1;
-    } else if(!reverse_file.is_open()) {
-        cout << "Failed to open Tracks_reverse.txt" << endl;
+    if(!load_database("Tracks.txt", database)) {
+        cout << "Error: could not open Tracks.txt" << endl;
         return 1;
     }
 
-    vector<Track> tracks;
-    vector<Track> sorted;
-    vector<Track> random;
-    vector<Track> reverse;
-    Track track;
+    cout << "Loaded " << ssize(database) << " element(s) from database" << endl;
+    SortAlgorithm algorithm = get_sort_algorithm();
+    cout << "Sorting database using " << SORT_ALGORITHM_NAMES[algorithm] << endl;
 
-    cout << "Loading databases..." << endl;
-    while(tracks_file >> track) {
-        tracks.push_back(track);
+    switch(algorithm)
+    {
+        case InsertionSort:
+            insertion_sort(database);
+            break;
+        case SelectionSort:
+            selection_sort(database);
+            break;
+        case BubbleSort:
+            bubble_sort(database);
+            break;
+        case HeapSort:
+            heap_sort(database);
+            break;
     }
 
-    while(sorted_file >> track) {
-        sorted.push_back(track);
+    cout << "Showing sorted database:" << endl;
+    for(int i = 0; i < ssize(database); i++) {
+        cout << database.at(i) << endl;
     }
 
-    while(random_file >> track) {
-        random.push_back(track);
-    }
-
-    while(reverse_file >> track) {
-        reverse.push_back(track);
-    }
-
-    cout << "Generating Tracks.txt measurements..." << endl;
-    generate_csv(tracks, tracks_csv);
-    cout << "Generating Tracks_sorted.txt measurements..." << endl;
-    generate_csv(sorted, sorted_csv);
-    cout << "Generating Tracks_random.txt measurements..." << endl;
-    generate_csv(random, random_csv);
-    cout << "Generating Tracks_reverse.txt measurements..." << endl;
-    generate_csv(reverse, reverse_csv);
-
-    return 0;
+	return 0;
 }
 #endif
